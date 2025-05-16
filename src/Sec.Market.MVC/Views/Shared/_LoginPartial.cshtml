@@ -1,0 +1,61 @@
+﻿@using System.Security.Principal
+
+
+
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <section class="col-lg-4 col-md-5 col-xs-12">
+        <div class="esh-identity">
+            <div class="navbar-right">
+                <section class="esh-identity-section">
+                    <div class="esh-identity-name">@User.Identity?.Name</div>
+                    <img class="esh-identity-image" src="~/images/arrow-down.png">
+                </section>
+
+                <section class="esh-identity-drop">
+
+                    <a class="esh-identity-item"
+                       asp-controller="Order"
+                       asp-action="Index">
+
+                        <div class="esh-identity-name esh-identity-name--upper">Commandes</div>
+                    </a>
+
+                    @if (@User.IsInRole("Admin"))
+                    {
+                        <a class="esh-identity-item"
+                           asp-controller="Product"
+                           asp-action="Liste">
+
+                            <div class="esh-identity-name esh-identity-name--upper">Produits</div>
+                        </a>
+                    }
+
+                    <a class="esh-identity-item"
+                       asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">
+
+                        <div class="esh-identity-name esh-identity-name--upper">Deconnexion</div>
+                    </a>
+
+                </section>
+            </div>
+        </div>
+    </section>
+
+
+}
+else
+{
+    <section class="col-lg-4 col-md-5 col-xs-12">
+        <div class="esh-identity">
+            <section class="esh-identity-section">
+                <div class="esh-identity-item">
+                    <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Sign in</a>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <section class="col-lg-1 col-xs-12">
+    </section>
+}
