@@ -15,6 +15,14 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: SonarCloudPrepare@3
+  inputs:
+    SonarQube: 'SonarCloud'
+    organization: '2394702'
+    scannerMode: 'dotnet'
+    projectKey: '2394702_Wednesday'
+    projectName: 'Wednesday'
+
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
