@@ -22,7 +22,6 @@ steps:
     SonarQube: 'SonarCloud'
     organization: '2394702'
     scannerMode: 'cli'
-    cliScannerVersion: 'cli'
     configMode: 'manual'
     cliProjectKey: '2394702_Wednesday'
     cliProjectName: 'Wednesday'
